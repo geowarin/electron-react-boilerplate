@@ -7,14 +7,12 @@ const cfg = require('./webpack.config.production.js');
 const packager = require('electron-packager');
 const del = require('del');
 const exec = require('child_process').exec;
-const argv = require('minimist')(process.argv.slice(2));
 const pkg = require('./package.json');
 const devDeps = Object.keys(pkg.devDependencies);
 
-const appName = argv.name || argv.n || pkg.productName;
-const shouldUseAsar = argv.asar || argv.a || false;
-const shouldBuildAll = argv.all || false;
-
+const appName = pkg.productName;
+const shouldUseAsar = false;
+const shouldBuildAll = false;
 
 const DEFAULT_OPTS = {
   dir: './',
@@ -27,13 +25,13 @@ const DEFAULT_OPTS = {
   ].concat(devDeps.map(name => `/node_modules/${name}($|/)`))
 };
 
-const icon = argv.icon || argv.i || 'app/app';
+const icon = 'app/app';
 
 if (icon) {
   DEFAULT_OPTS.icon = icon;
 }
 
-const version = argv.version || argv.v;
+const version = null;
 
 if (version) {
   DEFAULT_OPTS.version = version;
