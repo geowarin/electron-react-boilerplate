@@ -7,9 +7,10 @@
   "scripts": {
     "hot:server": "webpack-dev-server --config=webpack.config.development.js --hot --inline --colors",
     "hot:client": "electron ./",
-    "start":"npm-run-all --parallel hot:*",
-    "build": "webpack --config webpack.config.production.js --progress --profile --colors",
-    "package": "node package.js"
+    "start": "npm-run-all --parallel hot:*",
+    "build:webpack": "webpack --config webpack.config.production.js --progress --profile --colors",
+    "build:package": "node package.js",
+    "package": "npm-run-all build:*"
   },
   "bin": {
     "electron": "./node_modules/.bin/electron"
@@ -42,7 +43,6 @@
     "babel-preset-stage-2": "^6.3.13",
     "cross-env": "^1.0.7",
     "css-loader": "^0.23.1",
-    "del": "^2.2.0",
     "electron-debug": "^0.5.1",
     "electron-packager": "^5.2.0",
     "electron-prebuilt": "^0.36.2",
@@ -52,6 +52,7 @@
     "redux-devtools": "^3.0.1",
     "redux-devtools-dock-monitor": "^1.0.1",
     "redux-devtools-log-monitor": "^1.0.1",
+    "rimraf": "^2.5.0",
     "style-loader": "^0.13.0",
     "webpack": "^1.12.1",
     "webpack-dev-server": "^1.14.1",
