@@ -16,6 +16,7 @@ const finalCreateStore = compose(...middlewares)(createStore);
 
 var initialize = (initialState = {}) => {
   const store = finalCreateStore(rootReducer, initialState);
+  historyMiddleware.listenForReplays(store);
 
   if (module.hot) {
     // Enable Webpack hot module replacement for reducers

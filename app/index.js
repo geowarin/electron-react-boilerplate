@@ -6,7 +6,6 @@ import { Router } from 'react-router';
 import history from './history';
 import routes from './routes';
 import configureStore from './store/configureStore';
-import './app.styl';
 
 const store = configureStore();
 

@@ -2,9 +2,12 @@ import React, { Component, PropTypes } from 'react';
 import isDev from 'isdev';
 import DevTools from './DevTools';
 
+import { connect } from 'react-redux';
+import { routeActions } from 'redux-simple-router';
+
 import {Window, Toolbar, Content, Pane, NavGroup, NavGroupItem, NavTitle} from 'react-photonkit';
 
-export default class App extends Component {
+export class App extends Component {
   static propTypes = {
     children: PropTypes.element.isRequired
   };
@@ -16,9 +19,9 @@ export default class App extends Component {
 	<Toolbar title="basic template"/>
 	<Content>
 	  <Pane ptSize="sm" sidebar>
-	    <NavGroup activeKey={1} onSelect={(key) => this.handleSelect(key)} draggable>
+	    <NavGroup activeKey={this.props.routing.location.pathname} onSelect={(key) => this.handleSelect(key)} draggable>
 	      <NavTitle>Menu</NavTitle>
-	      <NavGroupItem eventKey="home" glyph="home" text="home"/>
+	      <NavGroupItem eventKey="/" glyph="home" text="home"/>
 	      <NavGroupItem eventKey="counter" glyph="clock" text="counter"/>
 	    </NavGroup>
 	  </Pane>
@@ -34,6 +37,11 @@ export default class App extends Component {
   }
 
   handleSelect(key) {
-    console.log(key);
+    this.props.replace(key);
   }
 }
+
+export default connect(
+  ({routing}) => ({routing}),
+  {...routeActions}
+)(App)
