@@ -4,9 +4,14 @@ import thunk from 'redux-thunk';
 import rootReducer from '../reducers';
 import DevTools from '../containers/DevTools';
 
+import history from '../history';
+import { syncHistory } from 'redux-simple-router';
+
+const historyMiddleware = syncHistory(history);
+
 const middlewares = process.env.NODE_ENV === 'development' ?
-  [applyMiddleware(thunk), DevTools.instrument()] :
-  [applyMiddleware(thunk)];
+  [applyMiddleware(historyMiddleware, thunk), DevTools.instrument()] :
+  [applyMiddleware(historyMiddleware, thunk)];
 const finalCreateStore = compose(...middlewares)(createStore);
 
 var initialize = (initialState = {}) => {
