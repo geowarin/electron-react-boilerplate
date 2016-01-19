@@ -23,7 +23,7 @@ const DEFAULT_OPTS = {
   version: getElectronVersion()
 };
 
-const targets = !shouldBuildAll ? getAllTargets() : [{platform: os.platform(), arch: os.arch()}];
+const targets = shouldBuildAll ? getAllTargets() : [{platform: os.platform(), arch: os.arch()}];
 
 rimraf('release');
 targets.forEach((target) => packageApp(target));
