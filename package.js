@@ -1,4 +1,3 @@
-/* eslint strict: 0, no-shadow: 0, no-unused-vars: 0, no-console: 0 */
 'use strict';
 
 const os = require('os');
@@ -25,29 +24,18 @@ const DEFAULT_OPTS = {
   ].concat(devDeps.map(name => `/node_modules/${name}($|/)`))
 };
 
-const icon = 'app/app';
+DEFAULT_OPTS.icon = 'app/app';
 
-if (icon) {
-  DEFAULT_OPTS.icon = icon;
-}
+// use the same version as the currently-installed electron-prebuilt
+exec('npm list electron-prebuilt', (err, stdout) => {
+  if (err) {
+    DEFAULT_OPTS.version = '0.36.2';
+  } else {
+    DEFAULT_OPTS.version = stdout.split('electron-prebuilt@')[1].replace(/\s/g, '');
+  }
 
-const version = null;
-
-if (version) {
-  DEFAULT_OPTS.version = version;
   startPack();
-} else {
-  // use the same version as the currently-installed electron-prebuilt
-  exec('npm list electron-prebuilt', (err, stdout) => {
-    if (err) {
-      DEFAULT_OPTS.version = '0.36.2';
-    } else {
-      DEFAULT_OPTS.version = stdout.split('electron-prebuilt@')[1].replace(/\s/g, '');
-    }
-
-    startPack();
-  });
-}
+});
 
 
 function startPack() {
