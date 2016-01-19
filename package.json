@@ -5,7 +5,7 @@
   "description": "Electron application boilerplate based on React, React Router, Webpack, React Hot Loader for rapid application development",
   "main": "main.js",
   "scripts": {
-    "hot:server": "webpack-dev-server --config=webpack.config.development.js --hot --inline --colors",
+    "hot:server": "node server.js",
     "hot:client": "electron ./",
     "start": "npm-run-all --parallel hot:*",
     "build:webpack": "webpack --config webpack.config.production.js --progress --profile --colors",
@@ -47,6 +47,7 @@
     "electron-packager": "^5.2.0",
     "electron-prebuilt": "^0.36.2",
     "extract-text-webpack-plugin": "^0.9.1",
+    "express": "^4.13.3",
     "isdev": "^1.0.1",
     "npm-run-all": "^1.5.0",
     "redux-devtools": "^3.0.1",
@@ -55,7 +56,8 @@
     "rimraf": "^2.5.0",
     "style-loader": "^0.13.0",
     "webpack": "^1.12.1",
-    "webpack-dev-server": "^1.14.1",
+    "webpack-dev-middleware": "^1.2.0",
+    "webpack-hot-middleware": "^2.4.1",
     "webpack-target-electron-renderer": "^0.3.0"
   },
   "dependencies": {

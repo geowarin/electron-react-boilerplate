@@ -11,7 +11,7 @@ export default class App extends Component {
     const ReduxMonitor = isDev ? <DevTools /> : null;
     return (
       <div> {this.props.children}
-	{ReduxMonitor }
+	{ReduxMonitor}
       </div>
     );
   }
