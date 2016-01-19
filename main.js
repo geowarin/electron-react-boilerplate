@@ -2,6 +2,7 @@
 'use strict';
 
 const electron = require('electron');
+const isDev = require('isdev');
 const app = electron.app;
 const BrowserWindow = electron.BrowserWindow;
 const Menu = electron.Menu;
@@ -14,7 +15,7 @@ let mainWindow = null;
 
 crashReporter.start();
 
-if (process.env.NODE_ENV === 'development') {
+if (isDev) {
   require('electron-debug')();
 }
 
@@ -27,7 +28,7 @@ app.on('window-all-closed', () => {
 app.on('ready', () => {
   mainWindow = new BrowserWindow({ width: 1024, height: 728 });
 
-  if (process.env.HOT) {
+  if (isDev) {
     mainWindow.loadURL(`file://${__dirname}/app/hot-dev-app.html`);
   } else {
     mainWindow.loadURL(`file://${__dirname}/app/app.html`);
@@ -37,7 +38,7 @@ app.on('ready', () => {
     mainWindow = null;
   });
 
-  if (process.env.NODE_ENV === 'development') {
+  if (isDev) {
     mainWindow.openDevTools();
   }
 

@@ -13,8 +13,7 @@ module.exports = {
   },
   output: {
     path: path.join(__dirname, 'dist'),
-    filename: 'bundle.js',
-    libraryTarget: 'commonjs2'
+    filename: 'bundle.js'
   },
   resolve: {
     extensions: ['', '.js', '.jsx'],

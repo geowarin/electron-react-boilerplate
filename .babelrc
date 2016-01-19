@@ -1,6 +1,5 @@
 {
   "presets": ["es2015", "stage-2", "react"],
-  "plugins": ["add-module-exports"],
   "env": {
     "development": {
       "presets": ["react-hmre"]

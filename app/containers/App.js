@@ -1,4 +1,6 @@
 import React, { Component, PropTypes } from 'react';
+import isDev from 'isdev';
+import DevTools from './DevTools'
 
 export default class App extends Component {
   //static propTypes = {
@@ -6,17 +8,10 @@ export default class App extends Component {
   //};
 
   render() {
+    const ReduxMonitor = isDev ? <DevTools /> : null;
     return (
-      <div>
-        {this.props.children}
-        {
-          (() => {
-            if (process.env.NODE_ENV !== 'production') {
-              const DevTools = require('./DevTools');
-              return <DevTools />;
-            }
-          })()
-        }
+      <div> {this.props.children}
+	{ReduxMonitor }
       </div>
     );
   }

@@ -10,6 +10,7 @@ const pkg = require('./package.json');
 const devDeps = Object.keys(pkg.devDependencies);
 
 const appName = pkg.productName;
+// https://github.com/atom/electron/blob/master/docs/tutorial/application-packaging.md
 const shouldUseAsar = false;
 const shouldBuildAll = false;
 
