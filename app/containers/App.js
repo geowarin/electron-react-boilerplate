@@ -8,7 +8,7 @@ export default class App extends Component {
   };
 
   render() {
-    const ReduxMonitor = isDev ? <DevTools /> : null;
+    const ReduxMonitor = process.env.NODE_ENV === 'development' ? <DevTools /> : null;
     return (
       <div> {this.props.children}
 	{ReduxMonitor}

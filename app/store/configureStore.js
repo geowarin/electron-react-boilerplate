@@ -4,7 +4,7 @@ import thunk from 'redux-thunk';
 import rootReducer from '../reducers';
 import DevTools from '../containers/DevTools';
 
-const middlewares = isDev ?
+const middlewares = process.env.NODE_ENV === 'development' ?
   [applyMiddleware(thunk), DevTools.instrument()] :
   [applyMiddleware(thunk)];
 const finalCreateStore = compose(...middlewares)(createStore);

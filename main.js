@@ -2,7 +2,6 @@
 'use strict';
 
 const electron = require('electron');
-const isDev = require('isdev');
 const app = electron.app;
 const BrowserWindow = electron.BrowserWindow;
 const Menu = electron.Menu;
@@ -15,7 +14,7 @@ let mainWindow = null;
 
 crashReporter.start();
 
-if (isDev) {
+if (process.env.NODE_ENV === 'development') {
   require('electron-debug')();
 }
 
@@ -28,7 +27,7 @@ app.on('window-all-closed', () => {
 app.on('ready', () => {
   mainWindow = new BrowserWindow({ width: 1024, height: 728 });
 
-  if (isDev) {
+  if (process.env.NODE_ENV === 'development') {
     mainWindow.loadURL(`file://${__dirname}/app/hot-dev-app.html`);
   } else {
     mainWindow.loadURL(`file://${__dirname}/app/app.html`);
@@ -38,7 +37,7 @@ app.on('ready', () => {
     mainWindow = null;
   });
 
-  if (isDev) {
+  if (process.env.NODE_ENV === 'development') {
     mainWindow.openDevTools();
   }
 
@@ -106,7 +105,7 @@ app.on('ready', () => {
       }]
     }, {
       label: 'View',
-      submenu: (process.env.NODE_ENV === 'development') ? [{
+      submenu: (process.env.NODE_ENV !== 'development') ? [{
         label: 'Reload',
         accelerator: 'Command+R',
         click() {
