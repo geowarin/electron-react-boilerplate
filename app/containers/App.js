@@ -1,5 +1,4 @@
 import React, { Component, PropTypes } from 'react';
-import isDev from 'isdev';
 import DevTools from './DevTools';
 
 import { connect } from 'react-redux';

@@ -1,6 +1,4 @@
 import { createStore, applyMiddleware, compose } from 'redux';
-import isDev from 'isdev';
-import thunk from 'redux-thunk';
 import rootReducer from '../reducers';
 import DevTools from '../containers/DevTools';
 
@@ -10,13 +8,15 @@ import { syncHistory } from 'redux-simple-router';
 const historyMiddleware = syncHistory(history);
 
 const middlewares = process.env.NODE_ENV === 'development' ?
-  [applyMiddleware(historyMiddleware, thunk), DevTools.instrument()] :
-  [applyMiddleware(historyMiddleware, thunk)];
+  [applyMiddleware(historyMiddleware), DevTools.instrument()] :
+  [applyMiddleware(historyMiddleware)];
 const finalCreateStore = compose(...middlewares)(createStore);
 
 var initialize = (initialState = {}) => {
   const store = finalCreateStore(rootReducer, initialState);
-  historyMiddleware.listenForReplays(store);
+  if (process.env.NODE_ENV === 'development') {
+    historyMiddleware.listenForReplays(store);
+  }
 
   if (module.hot) {
     // Enable Webpack hot module replacement for reducers
