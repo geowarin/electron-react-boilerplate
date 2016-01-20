@@ -57,7 +57,7 @@ function getAllTargets() {
   platforms.forEach(platform => {
     archs.forEach(arch => {
       if (!(platform === 'darwin' && arch === 'ia32')) { // darwin 32 does not exist
-	allVersions.push({platform, arch})
+        allVersions.push({platform, arch})
       }
     });
   });
