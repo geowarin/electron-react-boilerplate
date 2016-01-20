@@ -6,8 +6,9 @@ const rimraf = require('rimraf').sync;
 const exec = require('child_process').execSync;
 const pkg = require('./package.json');
 const devDeps = Object.keys(pkg.devDependencies);
+const argv = require('minimist')(process.argv.slice(2));
 
-const shouldBuildAll = false;
+const buildAllTargets = argv.all || false;
 
 const iconPath = 'app/app'; // without extension
 const DEFAULT_OPTS = {
@@ -23,7 +24,7 @@ const DEFAULT_OPTS = {
   version: getElectronVersion()
 };
 
-const targets = shouldBuildAll ? getAllTargets() : [{platform: os.platform(), arch: os.arch()}];
+const targets = buildAllTargets ? getAllTargets() : [{platform: os.platform(), arch: os.arch()}];
 
 rimraf('release');
 targets.forEach((target) => packageApp(target));

@@ -10,7 +10,8 @@
     "start": "npm-run-all --parallel hot:*",
     "build:webpack": "cross-env NODE_ENV=production webpack --config webpack.config.production.js --progress --profile --colors",
     "build:package": "node package.js",
-    "package": "npm-run-all build:*"
+    "package": "npm-run-all build:*",
+    "package:all": "npm-run-all 'build:* -- --all'"
   },
   "bin": {
     "electron": "./node_modules/.bin/electron"
@@ -48,6 +49,7 @@
     "electron-prebuilt": "^0.36.2",
     "express": "^4.13.3",
     "extract-text-webpack-plugin": "^0.9.1",
+    "minimist": "^1.2.0",
     "npm-run-all": "^1.5.0",
     "redux-devtools": "^3.0.1",
     "redux-devtools-dock-monitor": "^1.0.1",
