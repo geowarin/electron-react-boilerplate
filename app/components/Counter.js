@@ -18,10 +18,10 @@ class Counter extends Component {
         </div>
         <div className={styles.btnGroup}>
           <button className={styles.btn} onClick={increment}>
-	    +
+            +
           </button>
           <button className={styles.btn} onClick={decrement}>
-	    -
+            -
           </button>
         </div>
       </div>

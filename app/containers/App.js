@@ -15,23 +15,23 @@ export class App extends Component {
     const ReduxMonitor = process.env.NODE_ENV === 'development' ? <DevTools /> : null;
     return (
       <Window>
-	<Toolbar title="Electron and react!"/>
-	<Content>
-	  <Pane ptSize="sm" sidebar>
-	    <NavGroup activeKey={this.props.routing.location.pathname}
-		      onSelect={(key) => this.handleSelect(key)} draggable>
-	      <NavTitle>Menu</NavTitle>
-	      <NavGroupItem eventKey="/" glyph="home" text="home"/>
-	      <NavGroupItem eventKey="counter" glyph="clock" text="counter"/>
-	    </NavGroup>
-	  </Pane>
+        <Toolbar title="Electron and react!"/>
+        <Content>
+          <Pane ptSize="sm" sidebar>
+            <NavGroup activeKey={this.props.routing.location.pathname}
+                      onSelect={(key) => this.handleSelect(key)} draggable>
+              <NavTitle>Menu</NavTitle>
+              <NavGroupItem eventKey="/" glyph="home" text="home"/>
+              <NavGroupItem eventKey="counter" glyph="clock" text="counter"/>
+            </NavGroup>
+          </Pane>
 
-	  <div className="padded-more">
-	    {this.props.children}
-	    {ReduxMonitor}
-	  </div>
-	</Content>
-	<Toolbar psType="footer"/>
+          <div className="padded-more">
+            {this.props.children}
+            {ReduxMonitor}
+          </div>
+        </Content>
+        <Toolbar psType="footer"/>
       </Window>
     );
   }
