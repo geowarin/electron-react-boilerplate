@@ -15,10 +15,11 @@ export class App extends Component {
     const ReduxMonitor = process.env.NODE_ENV === 'development' ? <DevTools /> : null;
     return (
       <Window>
-	<Toolbar title="basic template"/>
+	<Toolbar title="Electron and react!"/>
 	<Content>
 	  <Pane ptSize="sm" sidebar>
-	    <NavGroup activeKey={this.props.routing.location.pathname} onSelect={(key) => this.handleSelect(key)} draggable>
+	    <NavGroup activeKey={this.props.routing.location.pathname}
+		      onSelect={(key) => this.handleSelect(key)} draggable>
 	      <NavTitle>Menu</NavTitle>
 	      <NavGroupItem eventKey="/" glyph="home" text="home"/>
 	      <NavGroupItem eventKey="counter" glyph="clock" text="counter"/>
@@ -36,11 +37,11 @@ export class App extends Component {
   }
 
   handleSelect(key) {
-    this.props.replace(key);
+    this.props.replacePath(key);
   }
 }
 
 export default connect(
   ({routing}) => ({routing}),
-  {...routeActions}
+  {replacePath: routeActions.replace}
 )(App)
