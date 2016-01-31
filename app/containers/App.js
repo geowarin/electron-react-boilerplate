@@ -1,10 +1,13 @@
-import React, { Component, PropTypes } from 'react';
+import React, {Component, PropTypes} from 'react';
 import DevTools from './DevTools';
 
-import { connect } from 'react-redux';
-import { routeActions } from 'react-router-redux';
+import {connect} from 'react-redux';
+import {routeActions} from 'react-router-redux';
 
+import {remote} from 'electron';
 import {Window, Toolbar, Content, Pane, NavGroup, NavGroupItem, NavTitle} from 'react-photonkit';
+
+const dialog = remote.dialog;
 
 export class App extends Component {
   static propTypes = {
@@ -24,6 +27,10 @@ export class App extends Component {
               <NavGroupItem eventKey="/" glyph="home" text="home"/>
               <NavGroupItem eventKey="counter" glyph="clock" text="counter"/>
             </NavGroup>
+            <NavGroup activeKey="" onSelect={() => this.openFile()} draggable>
+              <NavTitle>Actions</NavTitle>
+              <NavGroupItem glyph="attach" text="Open file..."/>
+            </NavGroup>
           </Pane>
 
           <div className="padded-more">
@@ -38,6 +45,14 @@ export class App extends Component {
 
   handleSelect(key) {
     this.props.replacePath(key);
+  }
+
+  openFile() {
+    const selected = dialog.showOpenDialog({properties: ['openFile']});
+    console.log("Selected file", selected);
+    if (selected) {
+      dialog.showMessageBox({type: 'info', buttons: ['Great!'], title: 'File selected', message: 'You have selected ' + selected});
+    }
   }
 }
 

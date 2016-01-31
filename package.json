@@ -8,7 +8,7 @@
     "hot:server": "node server.js",
     "hot:client": "cross-env NODE_ENV=development electron ./",
     "start": "npm-run-all --parallel hot:*",
-    "build:webpack": "cross-env NODE_ENV=production webpack --config webpack.config.production.js --progress --profile --colors",
+    "build:webpack": "cross-env NODE_ENV=production webpack --config webpack.config.production.js --progress --profile --color",
     "build:package": "node package.js",
     "package": "npm-run-all build:*",
     "package:all": "npm-run-all 'build:* -- --all'",
@@ -65,8 +65,7 @@
     "stylus-loader": "^1.5.1",
     "webpack": "^1.12.1",
     "webpack-dev-middleware": "^1.5.1",
-    "webpack-hot-middleware": "^2.6.4",
-    "webpack-target-electron-renderer": "^0.4.0"
+    "webpack-hot-middleware": "^2.6.4"
   },
   "dependencies": {
     "history": "^1.17.0",
