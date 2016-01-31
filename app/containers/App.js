@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import DevTools from './DevTools';
 
 import { connect } from 'react-redux';
-import { routeActions } from 'redux-simple-router';
+import { routeActions } from 'react-router-redux';
 
 import {Window, Toolbar, Content, Pane, NavGroup, NavGroupItem, NavTitle} from 'react-photonkit';
 

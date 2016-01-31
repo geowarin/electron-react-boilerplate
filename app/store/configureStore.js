@@ -3,7 +3,7 @@ import rootReducer from '../reducers';
 import DevTools from '../containers/DevTools';
 
 import history from '../history';
-import { syncHistory } from 'redux-simple-router';
+import { syncHistory } from 'react-router-redux';
 
 const historyMiddleware = syncHistory(history);
 
