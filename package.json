@@ -11,7 +11,8 @@
     "build:webpack": "cross-env NODE_ENV=production webpack --config webpack.config.production.js --progress --profile --colors",
     "build:package": "node package.js",
     "package": "npm-run-all build:*",
-    "package:all": "npm-run-all 'build:* -- --all'"
+    "package:all": "npm-run-all 'build:* -- --all'",
+    "test": "cross-env NODE_ENV=test mocha"
   },
   "bin": {
     "electron": "./node_modules/.bin/electron"
@@ -47,10 +48,15 @@
     "electron-debug": "^0.5.1",
     "electron-packager": "^5.2.0",
     "electron-prebuilt": "^0.36.2",
+    "enzyme": "^1.4.1",
+    "expect": "^1.13.4",
     "express": "^4.13.3",
     "extract-text-webpack-plugin": "^0.9.1",
+    "ignore-styles": "^1.2.0",
     "minimist": "^1.2.0",
+    "mocha": "^2.4.5",
     "npm-run-all": "^1.5.0",
+    "react-addons-test-utils": "^0.14.7",
     "redux-devtools": "^3.0.1",
     "redux-devtools-dock-monitor": "^1.0.1",
     "redux-devtools-log-monitor": "^1.0.1",
