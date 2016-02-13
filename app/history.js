@@ -1,2 +1,2 @@
-const createHistory = require('history/lib/createHashHistory');
-export default createHistory();
+import {hashHistory} from 'react-router';
+export default hashHistory;
