@@ -2,6 +2,7 @@
 'use strict';
 
 const webpack = require('webpack');
+const webpackTargetElectronRenderer = require('webpack-target-electron-renderer');
 const baseConfig = require('./webpack.config.base');
 
 const config = Object.create(baseConfig);
@@ -46,6 +47,6 @@ config.plugins.push(
 
 // when 2.0 is stable, might be worth checking the electron-renderer target
 // https://github.com/webpack/webpack/blob/master/lib/WebpackOptionsApply.js#L150
-config.target = "electron";
+config.target = webpackTargetElectronRenderer(config);
 
 module.exports = config;

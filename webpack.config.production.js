@@ -2,6 +2,7 @@
 'use strict';
 
 const webpack = require('webpack');
+const webpackTargetElectronRenderer = require('webpack-target-electron-renderer');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const baseConfig = require('./webpack.config.base');
 
@@ -42,6 +43,6 @@ config.plugins.push(
   new ExtractTextPlugin('style.css', {allChunks: true})
 );
 
-config.target = "electron";
+config.target = webpackTargetElectronRenderer(config);
 
 module.exports = config;

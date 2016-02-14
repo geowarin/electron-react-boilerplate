@@ -65,7 +65,8 @@
     "stylus-loader": "^1.5.1",
     "webpack": "^1.12.13",
     "webpack-dev-middleware": "^1.5.1",
-    "webpack-hot-middleware": "^2.7.1"
+    "webpack-hot-middleware": "^2.7.1",
+    "webpack-target-electron-renderer": "^0.4.0"
   },
   "dependencies": {
     "history": "^2.0.0",
