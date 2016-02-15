@@ -2,7 +2,7 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import rootReducer from '../reducers';
 import DevTools from '../ui/containers/DevTools';
 
-import history from '../history';
+import history from '../router/history';
 import { syncHistory } from 'react-router-redux';
 
 const historyMiddleware = syncHistory(history);
