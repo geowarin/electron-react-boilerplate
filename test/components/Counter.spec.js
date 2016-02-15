@@ -2,7 +2,7 @@ import expect, { createSpy } from 'expect'
 import {shallow} from 'enzyme';
 
 import React from 'react';
-import Counter from '../../app/components/Counter';
+import Counter from '../../app/ui/components/Counter';
 
 const increment = createSpy();
 const decrement = createSpy();

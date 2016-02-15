@@ -1,6 +1,6 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import rootReducer from '../reducers';
-import DevTools from '../containers/DevTools';
+import DevTools from '../ui/containers/DevTools';
 
 import history from '../history';
 import { syncHistory } from 'react-router-redux';
