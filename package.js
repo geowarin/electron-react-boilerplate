@@ -10,7 +10,7 @@ const argv = require('minimist')(process.argv.slice(2));
 
 const buildAllTargets = argv.all || false;
 
-const iconPath = 'app/app'; // without extension
+const iconPath = 'app/assets/icon/app'; // without extension
 const DEFAULT_OPTS = {
   dir: './',
   name: pkg.productName,
