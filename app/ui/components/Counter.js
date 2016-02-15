@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import styles from './Counter.module.styl';
 
-class Counter extends Component {
+export default class Counter extends Component {
   static propTypes = {
     increment: PropTypes.func.isRequired,
     decrement: PropTypes.func.isRequired,
@@ -27,5 +27,3 @@ class Counter extends Component {
     );
   }
 }
-
-export default Counter;
