@@ -9,6 +9,8 @@ import {Window, Toolbar, Content, Pane, NavGroup, NavGroupItem, NavTitle} from '
 
 const dialog = remote.dialog;
 
+import style from '../app.styl';
+
 export class App extends Component {
   static propTypes = {
     children: PropTypes.element.isRequired
@@ -33,7 +35,7 @@ export class App extends Component {
             </NavGroup>
           </Pane>
 
-          <div className="padded-more">
+          <div className="padded-more full">
             {this.props.children}
             {ReduxMonitor}
           </div>
